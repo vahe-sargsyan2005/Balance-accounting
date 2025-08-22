@@ -3,16 +3,16 @@
   "files": [],
   "references": [
     {
-      "path": "./BalanceAccounting/.nuxt/tsconfig.app.json"
+      "path": ".nuxt/tsconfig.app.json"
     },
     {
-      "path": "./BalanceAccounting/.nuxt/tsconfig.server.json"
+      "path": ".nuxt/tsconfig.server.json"
     },
     {
-      "path": "./BalanceAccounting/.nuxt/tsconfig.shared.json"
+      "path": ".nuxt/tsconfig.shared.json"
     },
     {
-      "path": "./BalanceAccounting/.nuxt/tsconfig.node.json"
+      "path": ".nuxt/tsconfig.node.json"
     }
   ]
 }
