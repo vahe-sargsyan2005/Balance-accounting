@@ -1,5 +1,11 @@
 <template>
   <div>
-    <div class="text-primary-200"">Hello</div>
+    <CommonCursor/>
+
+    <NuxtLayout>
+      <NuxtPage/>
+    </NuxtLayout>
   </div>
 </template>
+<script setup lang="ts">
+</script>
