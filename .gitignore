@@ -6,6 +6,7 @@ BalanceAccounting/.nuxt
 .cache
 .nuxt
 dist
+.lighthouseci
 
 # Node dependencies
 node_modules
