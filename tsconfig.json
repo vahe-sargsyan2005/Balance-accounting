@@ -1,0 +1,18 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "files": [],
+  "references": [
+    {
+      "path": "./BalanceAccounting/.nuxt/tsconfig.app.json"
+    },
+    {
+      "path": "./BalanceAccounting/.nuxt/tsconfig.server.json"
+    },
+    {
+      "path": "./BalanceAccounting/.nuxt/tsconfig.shared.json"
+    },
+    {
+      "path": "./BalanceAccounting/.nuxt/tsconfig.node.json"
+    }
+  ]
+}
