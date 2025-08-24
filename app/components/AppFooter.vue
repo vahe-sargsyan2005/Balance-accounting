@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { FooterApiResponse } from '~/types/footer'
 
-const { data: footerData } = await useFetch<FooterApiResponse>('/api/footer/links')
+import FooterSections from "~/components/footer/FooterSections.vue";
 </script>
 <template>
   <footer class="w-full rounded-t-[70px] relative overflow-hidden border-t-2 border-neutral-300">
@@ -27,9 +26,7 @@ const { data: footerData } = await useFetch<FooterApiResponse>('/api/footer/link
                 <FooterSubscribeForm/>
               </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <FooterSection v-for="section in footerData?.sections" :key="section.title" :section="section" />
-          </div>
+          <FooterSections/>
         </div>
       </div>
       <div class="flex justify-between w-full pt-5 border-t-2 border-neutral-600">
