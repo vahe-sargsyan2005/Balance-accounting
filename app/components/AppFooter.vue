@@ -1,17 +1,7 @@
 <script setup lang="ts">
 import type { FooterApiResponse } from '~/types/footer'
 
-const appConfig = useAppConfig()
-const email = ref('')
-
-const subscribe = () => {
-  if (!email.value) return alert('Մուտքագրեք ձեր էլ․ հասցեն։')
-  alert(`Շնորհակալություն, դուք բաժանորդագրվեցիք: ${email.value}`)
-  email.value = ''
-}
-
 const { data: footerData } = await useFetch<FooterApiResponse>('/api/footer/links')
-console.log(footerData)
 </script>
 <template>
   <footer class="w-full rounded-t-[70px] relative overflow-hidden border-t-2 border-neutral-300">
@@ -26,17 +16,7 @@ console.log(footerData)
           <div class="mt-5">
              <h6 class="font-bold text-lg mb-3">Հետևեք մեզ</h6>
             <div class="flex gap-2">
-              <a
-                  v-for="link in appConfig.social"
-                  :key="link.name"
-                  :href="link.href"
-                  target="_blank"
-                  rel="noopener"
-              >
-                <UiVButton variant="soft" color="apache" rounded="full" size="sm">
-                  <Icon :name="link.icon" class="size-4" />
-                </UiVButton>
-              </a>
+              <FooterSocialLinks/>
             </div>
           </div>
         </div>
@@ -44,23 +24,11 @@ console.log(footerData)
           <div class="pb-5 mb-5 border-b-2 border-neutral-600">
               <div class="text-sm flex gap-10 justify-between">
                 <div class="font-semibold text-2xl">Բաժանորդագրվեք<br/> մեր նորություններին!</div>
-                <div class="flex gap-2 items-center">
-                 <div class="flex bg-neutral-200 rounded-md overflow-hidden">
-                   <UiVInput v-model="email" placeholder="Մուտքագրեք էլ․ հասցե" />
-                   <UiVButton @click="subscribe">Բաժանորդագրվել</UiVButton>
-                 </div>
-                </div>
+                <FooterSubscribeForm/>
               </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <div v-for="section in footerData?.sections" :key="section.title">
-              <h6 class="font-bold text-lg mb-3">{{ section.title }}</h6>
-              <ul class="text-neutral-400 space-y-1">
-                <li v-for="link in section.links" :key="link.href">
-                  <UiVLink :href="link.href" size="sm">{{ link.label }}</UiVLink>
-                </li>
-              </ul>
-            </div>
+            <FooterSection v-for="section in footerData?.sections" :key="section.title" :section="section" />
           </div>
         </div>
       </div>
