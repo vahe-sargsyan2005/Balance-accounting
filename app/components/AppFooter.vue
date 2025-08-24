@@ -1,16 +1,18 @@
 <script setup lang="ts">
+import type { FooterApiResponse } from '~/types/footer'
+
 const appConfig = useAppConfig()
 const email = ref('')
 
 const subscribe = () => {
   if (!email.value) return alert('Մուտքագրեք ձեր էլ․ հասցեն։')
-
   alert(`Շնորհակալություն, դուք բաժանորդագրվեցիք: ${email.value}`)
   email.value = ''
 }
 
+const { data: footerData } = await useFetch<FooterApiResponse>('/api/footer/links')
+console.log(footerData)
 </script>
-
 <template>
   <footer class="w-full rounded-t-[70px] relative overflow-hidden border-t-2 border-neutral-300">
     <NuxtImg src="/images/bg/abstract_bg_3-gold.png" class="w-full absolute h-full object-cover pointer-events-none select-none -z-10"/>
@@ -51,36 +53,11 @@ const subscribe = () => {
               </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <div>
-              <h6 class="font-bold text-lg mb-3">Փաստաթղթեր</h6>
+            <div v-for="section in footerData?.sections" :key="section.title">
+              <h6 class="font-bold text-lg mb-3">{{ section.title }}</h6>
               <ul class="text-neutral-400 space-y-1">
-                <li>Տնտեսական հաշվետվություններ</li>
-                <li>Աուդիտներ</li>
-                <li>Հարկային փաստաթղթեր</li>
-              </ul>
-            </div>
-            <div>
-              <h6 class="font-bold text-lg mb-3">Ծառայություններ</h6>
-              <ul class="text-neutral-400 space-y-1">
-                <li>Հաշվապահություն</li>
-                <li>Ֆինանսական վերլուծություն</li>
-                <li>Տնտեսական ծրագրեր</li>
-                <li>Տնտեսական հաշվետվություններ</li>
-                <li>Աուդիտներ</li>
-                <li>Հարկային փաստաթղթեր</li>
-              </ul>
-            </div>
-            <div>
-              <h6 class="font-bold text-lg mb-3">Մեր մասին</h6>
-              <ul class="text-neutral-400 space-y-1">
-                <li>Մեր թիմը</li>
-                <li>Հետադարձ կապ</li>
-                <li>Բիզնես խորհրդատվություն</li>
-                <li>
-                  <a href="/privacy-policy" class="hover:underline hover:text-apache-500 transition-colors">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="/terms-and-conditions" class="hover:underline hover:text-apache-500 transition-colors">Terms & Conditions</a>
+                <li v-for="link in section.links" :key="link.href">
+                  <UiVLink :href="link.href" size="sm">{{ link.label }}</UiVLink>
                 </li>
               </ul>
             </div>

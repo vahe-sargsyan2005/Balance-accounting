@@ -1,0 +1,25 @@
+::-webkit-scrollbar {
+    @apply w-[9px] h-[9px] bg-neutral-900;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+        @apply bg-primary-500 rounded-sm bg-clip-content transition-colors cursor-pointer;
+}
+
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active {
+    @apply bg-primary-600;
+}
+
+.scroll-disabled::-webkit-scrollbar,
+[disabled]::-webkit-scrollbar {
+    @apply w-0 h-0 hidden;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement,
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    @apply hidden;
+}
