@@ -1,7 +1,7 @@
 <template>
     <div>
-<!--      <IndexPrimaryHeader/>-->
-<!--      <IndexAboutUs/>-->
+      <IndexPrimaryHeader/>
+      <IndexAboutUs/>
 <!--      <IndexWordBlock/>-->
 <!--      <IndexTestimonial/>-->
 <!--      <IndexStatistics/>-->

@@ -16,10 +16,8 @@ onMounted(() => {
   ];
 
   const removeCursor = [
-    ".learn-more-btn",
-    ".swiper-slider-main-main-wrapper-portfolio .thumbnail",
-    ".single-portfolio-style-five a",
-    ".mySwiper_portfolio-5-scale-none a"
+    ".about",
+    "input"
   ];
 
   const onMouseMove = (e: MouseEvent) => {
@@ -66,7 +64,6 @@ onMounted(() => {
     });
   });
 
-  // очистка
   onBeforeUnmount(() => {
     window.removeEventListener("mousemove", onMouseMove);
 
@@ -87,7 +84,6 @@ onMounted(() => {
 });
 </script>
 <template>
-  <!-- Внешний курсор -->
   <div
       class="rts-cursor cursor-outer fixed left-0 top-0 pointer-events-none transform-gpu invisible
            transition-transform ease-out duration-[80ms] z-[10000000]"
@@ -95,7 +91,7 @@ onMounted(() => {
       data-link="yes"
       data-slider="no"
   >
-    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[15px] -ml-[15px] w-[50px] h-[50px] rounded-full border-2 border-neutral-400"></span>
+    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[20px] -ml-[20px] w-[40px] h-[40px] rounded-full border-2 border-primary-600 transition-all duration-300"></span>
   </div>
 
   <div
@@ -104,7 +100,7 @@ onMounted(() => {
       data-link="yes"
       data-slider="no"
   >
-    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[3px] -ml-[3px] w-[6px] h-[6px] rounded-full bg-neutral-400 transition-all duration-500 ease-in-out">
+    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[3px] -ml-[3px] w-[6px] h-[6px] rounded-full bg-primary-500 transition-all duration-300 ease-in-out">
       <span class="fn-left"></span>
       <span class="fn-right"></span>
     </span>
@@ -149,5 +145,18 @@ onMounted(() => {
   right: -20px;
   top: 50%;
   margin-top: -10px;
+}
+
+.cursor-inner.cursor-hover span.fn-cursor {
+  @apply hidden;
+}
+
+.cursor-outer.cursor-hover span.fn-cursor {
+  @apply border-primary-500 opacity-25 border-4 bg-primary-500 w-[70px] h-[70px] -mt-[35px] -ml-[35px];
+}
+
+.cursor-inner.cursor-remove span.fn-cursor,
+.cursor-outer.cursor-remove span.fn-cursor {
+  @apply opacity-0 scale-[1.7] transition-all duration-300;
 }
 </style>
