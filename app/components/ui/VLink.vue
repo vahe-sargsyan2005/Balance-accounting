@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useAttrs } from 'vue'
+import { computed, useAttrs  } from 'vue'
+
 
 const props = defineProps<{
   href: string

@@ -13,6 +13,7 @@ onMounted(() => {
     ".active-progress",
     ".search-click",
     ".action-menu",
+    "#scroll-to-top"
   ];
 
   const removeCursor = [
@@ -91,7 +92,7 @@ onMounted(() => {
       data-link="yes"
       data-slider="no"
   >
-    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[20px] -ml-[20px] w-[40px] h-[40px] rounded-full border-2 border-primary-600 transition-all duration-300"></span>
+    <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[20px] -ml-[20px] w-[40px] h-[40px] rounded-full border-2 border-primary-600 transition-all duration-300"/>
   </div>
 
   <div
@@ -101,8 +102,8 @@ onMounted(() => {
       data-slider="no"
   >
     <span class="fn-cursor absolute top-1/2 left-1/2 -mt-[3px] -ml-[3px] w-[6px] h-[6px] rounded-full bg-primary-500 transition-all duration-300 ease-in-out">
-      <span class="fn-left"></span>
-      <span class="fn-right"></span>
+      <span class="fn-left"/>
+      <span class="fn-right"/>
     </span>
   </div>
 </template>

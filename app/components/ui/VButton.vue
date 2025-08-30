@@ -50,8 +50,8 @@ const btnColor = computed(() => colors[props.color || 'apache'][props.variant ||
 <template>
   <button
       :type="props.type || 'button'"
-      @click="emit('click')"
       :class="[btnSize, btnRounded, 'transition-colors flex items-center justify-center gap-2', btnColor]"
+      @click="emit('click')"
   >
     <slot />
   </button>
