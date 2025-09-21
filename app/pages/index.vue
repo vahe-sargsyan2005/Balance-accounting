@@ -2,7 +2,7 @@
     <div>
       <IndexPrimaryHeader/>
       <IndexAboutUs/>
-<!--      <IndexWordBlock/>-->
+      <IndexWordBlock/>
 <!--      <IndexTestimonial/>-->
 <!--      <IndexStatistics/>-->
 <!--      <IndexFaq/>-->
