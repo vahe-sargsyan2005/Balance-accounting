@@ -1,12 +1,11 @@
 <template>
   <div>
-    <CommonCursor/>
-    <CommonScrollToTop/>
+    <LazyCursor/>
 
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
+
+    <LazyScrollToTop/>
   </div>
 </template>
-<script setup lang="ts">
-</script>

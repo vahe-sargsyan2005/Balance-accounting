@@ -1,8 +1,12 @@
 <template>
     <div>
       <IndexPrimaryHeader/>
-      <IndexAboutUs/>
-      <IndexWordBlock/>
+      <IndexPromo/>
+      <div class="h-10">
+
+      </div>
+<!--      <IndexAboutUs/>-->
+<!--      <IndexWordBlock/>-->
 <!--      <IndexTestimonial/>-->
 <!--      <IndexStatistics/>-->
 <!--      <IndexFaq/>-->

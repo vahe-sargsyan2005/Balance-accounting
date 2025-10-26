@@ -11,8 +11,8 @@ const subscribe = () => {
 <template>
   <div class="flex gap-2 items-center">
     <div class="flex bg-neutral-200 rounded-md overflow-hidden">
-      <UiVInput v-model="email" placeholder="Մուտքագրեք էլ․ հասցե" />
-      <UiVButton @click="subscribe">Բաժանորդագրվել</UiVButton>
+      <UiInput v-model="email" placeholder="Մուտքագրեք էլ․ հասցե" />
+      <button @click="subscribe">Բաժանորդագրվել</button>
     </div>
   </div>
 </template>
