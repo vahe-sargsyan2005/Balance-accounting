@@ -11,7 +11,6 @@ const props = defineProps<{
   defaultActive?: number | null
 }>()
 
-// Открываем тот, который передал родитель
 const active = ref<number | null>(props.defaultActive ?? null)
 
 const toggle = (i: number) => {
@@ -27,24 +26,18 @@ const toggle = (i: number) => {
         class="bg-slate-800 border-2 border-primary-200 rounded-xl overflow-hidden transition-all"
     >
       <button
-          @click="toggle(i)"
           class="w-full flex items-center justify-between px-6 py-4 text-left text-white font-medium hover:bg-slate-750 transition-colors"
+          @click="toggle(i)"
       >
         <span>{{ item.question }}</span>
 
-        <svg
-            :class="['w-5 h-5 transition-transform duration-300', active === i ? 'rotate-180' : 'rotate-0']"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-        >
-          <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <Icon
+            name="lucide:chevron-down"
+            :class="[
+            'w-5 h-5 transition-transform duration-300',
+            active === i ? 'rotate-180' : 'rotate-0'
+          ]"
+        />
       </button>
 
       <div

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 
-const parallaxImg = ref<HTMLElement | null>(null)
+const parallaxImg = ref<HTMLImageElement | null>(null)
+const faqSection = ref<HTMLElement | null>(null)
 
 interface FaqItem {
   question: string
   answer: string
 }
-
 
 const faqItems: FaqItem[] = [
   {
@@ -37,17 +37,32 @@ const faqItems: FaqItem[] = [
   }
 ]
 
+
 const handleScroll = () => {
-  if (!parallaxImg.value) return
+  if (!faqSection.value || !parallaxImg.value) return
 
-  const maxShift = 70
-  const offset = Math.min(window.scrollY * 0.12, maxShift)
+  const rect = faqSection.value.getBoundingClientRect()
+  const sectionHeight = faqSection.value.offsetHeight
+  const windowHeight = window.innerHeight
 
-  gsap.to(parallaxImg.value, {
-    y: offset,
-    ease: 'power1.out',
-    duration: 0.3,
-  })
+  const maxParallaxDistance = sectionHeight * 0.2
+
+  if (rect.top < windowHeight && rect.bottom > 0) {
+
+    const scrollProgress = (windowHeight - rect.top) / (windowHeight + sectionHeight)
+
+    const newY = maxParallaxDistance * scrollProgress - (maxParallaxDistance / 2)
+
+    gsap.to(parallaxImg.value, {
+      y: newY,
+      ease: 'power1.out',
+      overwrite: 'auto',
+      duration: 0.3
+    })
+  } else {
+
+    // gsap.to(parallaxImg.value, { y: 0, duration: 0.3 })
+  }
 }
 
 onMounted(() => {
@@ -60,12 +75,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="my-10 bg-mirage-950 relative">
-    <div class="flex mx-auto container justify-center items-center py-20 gap-10 px-2">
+  <section ref="faqSection" class="my-10 bg-mirage-950 relative">
+    <div class="flex mx-auto container py-20 gap-10 px-2 justify-between items-end">
       <div class="relative z-10 w-full lg:w-1/2">
         <div class="mb-16">
           <h1 class="text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
-            Հաճախ տրվող<br />
+            Հաճախ տրվող<br >
             հարցեր
           </h1>
           <p class="text-xl text-slate-400 mt-6">
@@ -73,26 +88,29 @@ onBeforeUnmount(() => {
           </p>
         </div>
 
-        <!-- ВОТ ЭТА СТРОКА — ключевой момент -->
-        <UiVAccordion :items="faqItems" :defaultActive="0" />
+        <UiVAccordion :items="faqItems" :default-active="0" />
       </div>
 
-      <div class="lg:w-1/2">
-        <p class="text-slate-400 mb-6">Մնացի՞ն հարցեր</p>
-        <button class="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
-          Կապվել մեզ հետ
-        </button>
+      <div class="lg:w-1/2 z-10 flex items-end">
+        <div class="bg-slate-800 p-5 rounded-2xl border-2 border-primary-200">
+          <p class="text-slate-400 mb-2">Explore common queries about working<br> with Balance. Still unsure?</p>
+          <div class="flex gap-2">
+            <UiVLink color="primary" href="#">
+              Կապվել մեզ հետ
+            </UiVLink>
+            <p class="text-slate-400">– we’re happy to help.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="absolute top-0 right-0 w-full lg:w-1/2 h-full overflow-hidden">
-      <NuxtImg
+    <div class="absolute top-0 right-0 bottom-0 w-full lg:w-1/2 h-full overflow-hidden">
+      <img
           ref="parallaxImg"
-          class="w-full h-full object-cover pointer-events-none select-none top-0 left-0 scale-[1.1] absolute z-10"
+          class="w-full h-full object-cover pointer-events-none select-none absolute top-0 left-0"
           src="/images/faq-bg.jpg"
-          format="webp"
           alt="FAQ Background"
-      />
+      >
     </div>
   </section>
 </template>

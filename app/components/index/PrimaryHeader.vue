@@ -43,16 +43,18 @@ onBeforeUnmount(() => {
     <div class="relative h-full">
       <div class="flex h-full">
         <div class="w-[55%] relative">
-          <img ref="parallaxImg"
+          <img
+ref="parallaxImg"
                src="https://templates.envytheme.com/exrox/default/assets/img/hero/diagram-2.png"
                class="opacity-25 absolute bottom-0 pointer-events-none select-none w-full">
         </div>
         <div class="w-[45%] h-full relative overflow-hidden bg-secondary-900/20">
-          <img ref="backgroundImg"
+          <img
+ref="backgroundImg"
                class="w-full h-full object-cover pointer-events-none select-none  top-0 left-0 scale-[1.1] absolute z-10"
                src="https://templates.envytheme.com/exrox/default/assets/img/hero/hero-bg-5.jpg"
                format="webp"
-               alt="primary bg-image" :placeholder="img('https://templates.envytheme.com/exrox/default/assets/img/hero/hero-bg-5.jpg', createPlaceholder(50, 50))"/>
+               alt="primary bg-image" :placeholder="img('https://templates.envytheme.com/exrox/default/assets/img/hero/hero-bg-5.jpg', createPlaceholder(50, 50))">
           <div class="w-full h-full flex items-center justify-center">
             <Icon name="lucide:file-image" class="w-60 h-60 text-secondary-900/20"/>
 

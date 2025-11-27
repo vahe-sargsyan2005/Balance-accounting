@@ -22,7 +22,7 @@ const linkSize = computed(() => {
 });
 
 const colors = {
-  primary: { solid: 'text-apache-300 underline hover:text-apache-600', soft: 'text-apache-500/20 text-apache-500 hover:text-apache-500/30' },
+  primary: { solid: 'text-primary-300 underline hover:text-primary-600', soft: 'text-primary-500/20 text-apache-500 hover:text-primary-500/30' },
   green: { solid: 'bg-green-500 text-white hover:bg-green-600', soft: 'bg-green-500/20 text-green-500 hover:bg-green-500/30' },
   blue: { solid: 'bg-blue-500 text-white hover:bg-blue-600', soft: 'bg-blue-500/20 text-blue-500 hover:bg-blue-500/30' }
 }
