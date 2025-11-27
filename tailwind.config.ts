@@ -7,8 +7,7 @@ export default <Partial<Config>>{
             colors: {
                 primary: madang,
                 secondary: daintree,
-                mirage,
-                daintree
+                mirage
             },
             fontFamily: {
                 dm: ['"DM Sans"', 'sans-serif']

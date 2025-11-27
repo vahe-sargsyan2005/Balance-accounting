@@ -19,7 +19,7 @@ const onInput = (event: Event) => {
       type="email"
       :placeholder="props.placeholder"
       :value="props.modelValue"
-      class="px-3 py-2 bg-neutral-200 text-black rounded-l-md focus:outline-none w-full"
+      class="px-3 py-2 placeholder-neutral-400"
       @input="onInput"
   >
 </template>
