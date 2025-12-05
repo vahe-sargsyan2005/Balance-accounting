@@ -19,10 +19,7 @@ export default defineNuxtConfig({
     locales: [
       { code: 'hy', iso: 'hy-AM', dir: 'ltr', displayName: 'Հայերեն' },
       { code: 'ru', iso: 'ru-RU', dir: 'ltr', displayName: 'Русский' },
-      { code: 'en', iso: 'en-US', dir: 'ltr', displayName: 'English' },
-      // { code: 'fr', iso: 'fr-FR', dir: 'ltr', displayName: 'Français' },
-      // { code: 'de', iso: 'de-DE', dir: 'ltr', displayName: 'Deutsch' },
-      // { code: 'es', iso: 'es-ES', dir: 'ltr', displayName: 'Español' }
+      { code: 'en', iso: 'en-US', dir: 'ltr', displayName: 'English' }
     ],
     defaultLocale: 'en',
     translationDir: 'locales',

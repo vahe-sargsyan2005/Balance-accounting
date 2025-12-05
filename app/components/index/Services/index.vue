@@ -1,13 +1,14 @@
 <script setup lang="ts">
-const locale = useLocaleHead()
+const { $getLocale} = useI18n()
+
+const locale = $getLocale()
 
 const { data: services } = await useFetch('/api/services', {
   query: { lang: locale },
   transform: (data) => data,
   key: `services-list-${locale}`,
-});
+})
 </script>
-
 <template>
   <section id="services" class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto">
