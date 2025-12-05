@@ -9,7 +9,7 @@
       {{ $t('aboutUs.mainHeading1') }} <span class="text-gray-400">{{ $t('aboutUs.mainHeading2') }}</span>
     </h2>
 
-    <p class="text-gray-600 mb-10 max-w-2xl">
+    <p class="text-gray-500 mb-10 max-w-2xl">
       {{ $t('aboutUs.description') }}
     </p>
 

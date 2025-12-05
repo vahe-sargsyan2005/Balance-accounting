@@ -3,6 +3,12 @@
     "loading": "Loading data...",
     "errorLoading": "Failed to load services. Please try again later."
   },
+  "experience": {
+    "sectionTitle": "OUR EXPERIENCE & IMPACT",
+    "projectsDesc": "projects we've conducted across industries and geographies",
+    "teamDesc": "Diverse in-house team members",
+    "partnersDesc": "Ecosystem partners with ongoing access to leading capabilities"
+  },
   "aboutUs": {
     "sectionTitle": "ABOUT US",
     "mainHeading1": "Strategic Financial Guidance That Drives Performance",

@@ -1,5 +1,6 @@
 <template>
     <div>
+      <IndexExperienceImpact/>
       <IndexAboutUs/>
       <IndexServices/>
     </div>

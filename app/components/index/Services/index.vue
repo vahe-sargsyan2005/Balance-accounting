@@ -20,7 +20,7 @@ const { data: services } = await useFetch('/api/services', {
           </div>
 
           <h2 class="text-6xl font-bold text-gray-900 mb-10">
-            {{ $t('services.sectionTitle1') }}<br/>
+            {{ $t('services.sectionTitle1') }}<br>
             <span class="text-gray-500">{{ $t('services.sectionTitle2') }}</span>
           </h2>
         </div>
