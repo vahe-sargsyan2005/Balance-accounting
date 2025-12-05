@@ -1,52 +1,59 @@
 <script setup lang="ts">
-import gsap from "gsap";
+import { gsap } from 'gsap'
+
+const showStickyHeader = ref(false)
 
 onMounted(() => {
-  const header = document.querySelector("header");
-  if (!header) return;
+  const header = document.querySelector('.main-header')
+  const sticky = document.querySelector('.sticky-header')
 
-  gsap.fromTo(header,
-      { paddingTop: "1.25rem", paddingBottom: "1.25rem", borderTopColor: "rgba(255,255,255,0.1)" },
-      {
-        paddingTop: "0.7rem",
-        paddingBottom: "1.25rem",
-        top: "0rem",
-        borderTopRightRadius: "0",
-        borderTopLeftRadius: "0",
-        borderTopColor: "transparent",
-        backgroundColor: "rgba(0,0,0,0.3)",
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: header,
-          start: "top top",
-          end: "+=50",
-          scrub: true,
-        }
+  const headerHeight = header?.offsetHeight
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY
+
+    if (scrollY > headerHeight + 80) {
+      if (!showStickyHeader.value) {
+        showStickyHeader.value = true
+        gsap.fromTo(
+            sticky,
+            { y: -60, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
+        )
       }
-  );
-});
+    } else if (showStickyHeader.value) {
+      showStickyHeader.value = false
+      gsap.to(sticky, { y: -60, opacity: 0, duration: 0.4, ease: 'power2.in' })
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll)
+  onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll))
+})
 </script>
 
 <template>
-  <header
-      class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-screen-2xl
-           bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-7 py-5
-           flex items-center justify-between transition-all duration-300">
+  <div class="relative">
+    <header class="main-header w-full z-50">
+      <div class="container mx-auto px-3 py-8">
+        <div class="text-xl font-semibold text-white flex items-center gap-1"><Icon name="lucide:scale" :size="40" class="text-primary-200"/> <span class="leading-none text-3xl">BALANCE</span></div>
+      </div>
+    </header>
 
-    <div class="flex justify-between flex-col">
-      <h1 class="text-2xl md:text-3xl tracking-wide text-white">
-        <span class="text-primary-400">B</span>ALANCE
-      </h1>
-      <span class="text-xs text-white"><span class="text-primary-400">Հաշվապահական</span> անկյուն</span>
-    </div>
-
-    <nav class="flex space-x-8 text-white/80 relative">
-      <a href="#" class="hover:text-primary-400 transition">Գլխավոր</a>
-      <a href="#" class="hover:text-primary-400 transition">Ծառայություններ</a>
-      <a href="#" class="hover:text-primary-400 transition">Մեր մասին</a>
-      <a href="#" class="hover:text-primary-400 transition">Կոնտակտներ</a>
-    </nav>
-
-    <div class="w-[150px]"></div>
-  </header>
+    <header
+        v-show="showStickyHeader"
+        class="sticky-header fixed top-0 left-0 w-full bg-mirage-950 z-50"
+    >
+      <div class="container mx-auto px-3 py-4">
+        <div class="text-xl font-semibold text-white flex items-center gap-1"><Icon name="lucide:scale" :size="40" class="text-primary-200"/> <span class="leading-none text-3xl">BALANCE</span></div>
+      </div>
+    </header>
+  </div>
 </template>
+
+<style scoped>
+.sticky-header {
+  pointer-events: none;
+  transform: translateY(-60px);
+}
+</style>

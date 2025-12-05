@@ -1,11 +1,14 @@
 <template>
     <div>
       <IndexPrimaryHeader/>
-      <IndexAboutUs/>
-      <IndexWordBlock/>
+      <IndexPromo/>
+<!--      <IndexAboutUs/>-->
+<!--      <IndexWordBlock/>-->
 <!--      <IndexTestimonial/>-->
 <!--      <IndexStatistics/>-->
-<!--      <IndexFaq/>-->
+      <IndexCareerFeatures/>
+      <IndexJobOpeningsList/>
+      <IndexFaq/>
 <!--      <IndexTeam/>-->
 <!--      <IndexContact />-->
     </div>

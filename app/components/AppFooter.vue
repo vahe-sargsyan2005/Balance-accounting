@@ -1,23 +1,17 @@
 <script setup lang="ts">
 
 import FooterSections from "~/components/footer/FooterSections.vue";
+
 </script>
 <template>
-  <footer class="w-full rounded-t-[70px] relative overflow-hidden border-t-2 border-neutral-300">
-    <NuxtImg src="/images/bg/abstract_bg_3-gold.png" class="w-full absolute h-full object-cover pointer-events-none select-none -z-10"/>
-    <div class="max-w-screen-2xl mx-auto text-white flex flex-col justify-between py-5">
-      <div class="my-10 flex justify-between gap-10">
+  <footer class="w-full relative overflow-hidden bg-mirage-950">
+    <div class="text-white flex flex-col justify-between py-5">
+      <div class="my-10 flex justify-between gap-10 container mx-auto">
         <div class="w-1/2">
           <h5 class="text-4xl font-semibold mb-1"><span class="text-apache-400">B</span>ALANCE</h5>
-          <p class="text-neutral-400">
+          <p class="text-neutral-400 text-lg">
             Բիզնես հաշվառում, ֆինանսական լուծումներ և խորհրդատվություն՝ արդյունավետ կառավարման համար:
           </p>
-          <div class="mt-5">
-             <h6 class="font-bold text-lg mb-3">Հետևեք մեզ</h6>
-            <div class="flex gap-2">
-              <FooterSocialLinks/>
-            </div>
-          </div>
         </div>
         <div class="text-sm w-full">
           <div class="pb-5 mb-5 border-b-2 border-neutral-600">
@@ -29,12 +23,16 @@ import FooterSections from "~/components/footer/FooterSections.vue";
           <FooterSections/>
         </div>
       </div>
-      <div class="flex justify-between w-full pt-5 border-t-2 border-neutral-600">
-        <div>
-          © 2024-2025 <b>Բալանս</b>։ Բոլոր իրավունքները պաշտպանված են։
-        </div>
-        <div>
-            Կայքը by <a href="https://vahe.anidzen.com" target="_blank" rel="noopener" class="underline hover:text-apache-500 transition-colors">Vahe Sargsyan</a> ⚡
+      <div class="pt-5 border-t border-neutral-500">
+        <div class="container mx-auto flex justify-between w-full ">
+          <div class="text-neutral-400">
+            <b class="text-primary-200">©</b> 2024-2025 <b class="text-primary-200">BALANCE Հաշվապահական անկյուն</b>։ Բոլոր իրավունքները պաշտպանված են։
+          </div>
+          <div class="text-sm  text-neutral-400">
+            <p>
+              Կայքը by <a href="https://vahe.anidzen.com" target="_blank" rel="noopener" class="underline text-primary-200 hover:text-primary-300 transition-colors">Vahe Sargsyan</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
