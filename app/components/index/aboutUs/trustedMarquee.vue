@@ -3,7 +3,7 @@ const { data: companies } = await useFetch('/api/companies')
 </script>
 
 <template>
-  <h3 class="text-2xl font-semibold text-gray-800 pb-10">{{ $t('aboutUs.trustedTitle') }}</h3>
+  <h3 class="text-3xl font-semibold text-gray-800 pb-10 italic">{{ $t('aboutUs.trustedTitle') }}</h3>
   <div class="marquee-container overflow-hidden whitespace-nowrap mb-20" aria-hidden="true">
     <div class="marquee-content inline-block">
 

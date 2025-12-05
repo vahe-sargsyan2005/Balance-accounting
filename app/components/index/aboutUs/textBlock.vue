@@ -5,11 +5,11 @@
       <p class="uppercase tracking-widest">{{ $t('aboutUs.sectionTitle') }}</p>
     </div>
 
-    <h2 class="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-10">
+    <h2 class="text-6xl font-bold  text-gray-900 mb-10">
       {{ $t('aboutUs.mainHeading1') }} <span class="text-gray-400">{{ $t('aboutUs.mainHeading2') }}</span>
     </h2>
 
-    <p class="text-gray-600 mb-10">
+    <p class="text-gray-600 mb-10 max-w-2xl">
       {{ $t('aboutUs.description') }}
     </p>
 
