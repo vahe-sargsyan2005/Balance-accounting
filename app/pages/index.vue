@@ -1,6 +1,6 @@
 <template>
     <div>
       <IndexAboutUs/>
-      <OurClients/>
+      <IndexServices/>
     </div>
 </template>

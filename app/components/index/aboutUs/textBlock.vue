@@ -13,7 +13,7 @@
       {{ $t('aboutUs.description') }}
     </p>
 
-    <hr class="mb-10"/>
+    <hr class="mb-10">
 
     <IndexAboutUsTrustedMarquee/>
   </div>
