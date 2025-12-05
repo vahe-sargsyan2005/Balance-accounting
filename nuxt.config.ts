@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@nuxtjs/color-mode',
     'nuxt-i18n-micro',
     '@nuxt/fonts'
   ],
@@ -28,18 +27,6 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     translationDir: 'locales',
     meta: true,
-  },
-
-  colorMode: {
-    preference: 'system',
-    fallback: 'dark',
-    hid: 'nuxt-color-mode-script',
-    globalName: '__NUXT_COLOR_MODE__',
-    componentName: 'ColorScheme',
-    classPrefix: '',
-    classSuffix: '',
-    storage: 'cookie',
-    storageKey: 'color-mode'
   },
 
   fonts: {
