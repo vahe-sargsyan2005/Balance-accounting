@@ -3,8 +3,8 @@
 
     <div class="p-6 flex-grow">
 
-      <div class="mb-4 text-blue-600">
-        <Icon :name="service.iconName || 'i-lucide-infinity'" class="w-8 h-8" />
+      <div class="mb-5 text-blue-600">
+        <Icon :name="service.iconName || 'i-lucide-infinity'" class="w-10 h-10" />
       </div>
 
       <h3 class="text-gray-900 text-3xl font-semibold  pb-10 italic group-hover:text-blue-600 group-hover:underline transition-all">{{ service.title }}</h3>
