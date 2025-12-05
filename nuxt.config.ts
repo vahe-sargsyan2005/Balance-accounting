@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     'nuxt-i18n-micro',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    'nuxt-swiper'
   ],
 
   i18n: {

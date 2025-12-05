@@ -3,5 +3,6 @@
       <IndexExperienceImpact/>
       <IndexAboutUs/>
       <IndexServices/>
+      <IndexTestimonials/>
     </div>
 </template>
