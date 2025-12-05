@@ -5,7 +5,6 @@ interface JobFeature {
   icon: string;
 }
 
-
 const features: JobFeature[] = [
   {
     title: "Կարիերայի Աճ",
@@ -41,22 +40,25 @@ const features: JobFeature[] = [
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto text-center mb-10">
-    <p class="text-lg mb-3 text-slate-200">Ինչու՞ Միանալ Մեր Թիմին</p>
-    <h2 class="text-4xl text-slate-300 mb-10 lg:mb-14">
-      Մենք ներդրում ենք կատարում մեր աշխատակիցների մեջ՝ մասնագիտական զարգացման, մրցունակ արտոնությունների և աջակցող աշխատանքային միջավայրի միջոցով
-    </h2>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20 lg:pb-24">
-    <div
-        v-for="(feature, index) in features"
-        :key="index"
-        class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300"
-    >
-      <img :src="feature.icon" :alt="feature.title" class="w-8 h-8 mb-4" >
-      <h3 class="text-xl font-bold text-gray-800 mb-3">{{ feature.title }}</h3>
-      <p class="text-base text-gray-600 mb-0">{{ feature.description }}</p>
+  <section class="my-20">
+    <div class="max-w-7xl mx-auto text-center ">
+      <p class="text-lg mb-3 text-slate-200">Ինչու՞ Միանալ Մեր Թիմին</p>
+      <h2 class="text-4xl text-slate-300 mb-10 lg:mb-14">
+        Մենք ներդրում ենք կատարում մեր աշխատակիցների մեջ՝ մասնագիտական զարգացման, մրցունակ արտոնությունների և աջակցող աշխատանքային միջավայրի միջոցով
+      </h2>
     </div>
-  </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mx-auto container">
+      <div
+          v-for="(feature, index) in features"
+          :key="index"
+          class="p-10 rounded-2xl shadow-lg bg-slate-800  hover:shadow-xl transition duration-300 border-primary-200 border-2"
+      >
+        <img :src="feature.icon" :alt="feature.title" class="w-8 h-8 mb-4" >
+        <h3 class="text-white ">{{ feature.title }}</h3>
+        <p class="text-slate-300 text-base leading-relaxed animate-accordion">{{ feature.description }}</p>
+      </div>
+    </div>
+  </section>
+
 </template>

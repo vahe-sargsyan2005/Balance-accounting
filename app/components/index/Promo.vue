@@ -22,7 +22,7 @@ const achievements = [
         <div
             v-for="(item, index) in achievements"
             :key="index"
-            class="flex flex-col sm:flex-1 sm:items-center"
+            class="flex flex-col sm:items-center"
         >
           <span class="text-4xl font-semibold text-primary-200">{{ item.year }}</span>
           <p class="text-gray-300 mt-3 sm:max-w-xs text-center">

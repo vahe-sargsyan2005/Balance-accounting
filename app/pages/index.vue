@@ -6,7 +6,8 @@
 <!--      <IndexWordBlock/>-->
 <!--      <IndexTestimonial/>-->
 <!--      <IndexStatistics/>-->
-  <IndexJobOpeningsList/>
+      <IndexCareerFeatures/>
+      <IndexJobOpeningsList/>
       <IndexFaq/>
 <!--      <IndexTeam/>-->
 <!--      <IndexContact />-->
