@@ -1,3 +1,18 @@
+<script setup lang="ts">
+defineProps({
+  service: {
+    type: Object,
+    default: () => ({
+      id: 0,
+      iconName: 'i-lucide-infinity',
+      title: 'Default Service',
+      features: ['Feature 1', 'Feature 2'],
+      image: '/images/service-placeholder.jpg'
+    })
+  }
+});
+</script>
+
 <template>
   <div class=" rounded-tl-3xl rounded-br-3xl  ring-1 ring-gray-200 flex flex-col h-full overflow-hidden group hover:ring-blue-600 transition-all">
 
@@ -23,18 +38,3 @@
 
   </div>
 </template>
-
-<script setup>
-defineProps({
-  service: {
-    type: Object,
-    default: () => ({
-      id: 0,
-      iconName: 'i-lucide-infinity',
-      title: 'Default Service',
-      features: ['Feature 1', 'Feature 2'],
-      image: '/images/service-placeholder.jpg'
-    })
-  }
-});
-</script>

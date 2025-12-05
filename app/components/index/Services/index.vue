@@ -1,7 +1,7 @@
-<script setup>
-const { locale } = useI18n();
+<script setup lang="ts">
+const locale = useLocaleHead()
 
-const { data: services, status } = await useFetch('/api/services', {
+const { data: services } = await useFetch('/api/services', {
   query: { lang: locale },
   transform: (data) => data,
   key: `services-list-${locale}`,
