@@ -1,15 +1,17 @@
 <template>
     <div>
-      <IndexPrimaryHeader/>
-      <IndexPromo/>
-<!--      <IndexAboutUs/>-->
-<!--      <IndexWordBlock/>-->
-<!--      <IndexTestimonial/>-->
-<!--      <IndexStatistics/>-->
-      <IndexCareerFeatures/>
-      <IndexJobOpeningsList/>
-      <IndexFaq/>
-<!--      <IndexTeam/>-->
-<!--      <IndexContact />-->
+      <Hero/>
+      <IndexExperienceImpact/>
+      <IndexAboutUs/>
+      <IndexServices/>
+      <Process/>
+      <CourseCoursesSection/>
+      <Cases/>
+      <TeamSection/>
+      <CareerCareersSection/>
+      <IndexFaqSection/>
+      <IndexTestimonials/>
+      <ContactSection/>
+      <Footer/>
     </div>
 </template>

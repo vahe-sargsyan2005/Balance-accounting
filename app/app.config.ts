@@ -5,7 +5,7 @@ export default defineAppConfig({
         favicon: '/favicon.ico',
         email: 'w33bv.gl@gmail.com',
         phone: '+374 (94) 161-331',
-        url: 'https://balance-accounting.example.com',
+        url: 'https://balance.example.com',
         author: '@Vahesargsyan2005',
     },
     social: [

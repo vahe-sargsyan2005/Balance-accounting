@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { getLocaleFiles } from './i18n/i18n.helpers'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   ssr: false,
@@ -11,35 +12,20 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@nuxtjs/color-mode',
-    'nuxt-i18n-micro',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    'nuxt-swiper',
+    '@nuxtjs/i18n'
   ],
+
 
   i18n: {
     locales: [
-      { code: 'hy', iso: 'hy-AM', dir: 'ltr', displayName: 'Հայերեն' },
-      { code: 'ru', iso: 'ru-RU', dir: 'ltr', displayName: 'Русский' },
-      { code: 'en', iso: 'en-US', dir: 'ltr', displayName: 'English' },
-      { code: 'fr', iso: 'fr-FR', dir: 'ltr', displayName: 'Français' },
-      { code: 'de', iso: 'de-DE', dir: 'ltr', displayName: 'Deutsch' },
-      { code: 'es', iso: 'es-ES', dir: 'ltr', displayName: 'Español' }
+      { code: 'hy', iso: 'hy-AM',  displayName: 'Հայերեն', files: getLocaleFiles('hy') },
+      { code: 'ru', iso: 'ru-RU', displayName: 'Русский', files: getLocaleFiles('ru') },
+      { code: 'en', iso: 'en-US', displayName: 'English', files: getLocaleFiles('en') }
     ],
-    defaultLocale: 'en',
-    translationDir: 'locales',
-    meta: true,
-  },
-
-  colorMode: {
-    preference: 'system',
-    fallback: 'dark',
-    hid: 'nuxt-color-mode-script',
-    globalName: '__NUXT_COLOR_MODE__',
-    componentName: 'ColorScheme',
-    classPrefix: '',
-    classSuffix: '',
-    storage: 'cookie',
-    storageKey: 'color-mode'
+    defaultLocale: 'hy',
+    strategy: 'prefix_except_default',
   },
 
   fonts: {

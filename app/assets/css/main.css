@@ -1,5 +1,5 @@
 body {
-    @apply bg-neutral-50 dark:bg-zinc-900;
+    @apply bg-neutral-50;
 }
 
 p, span, b, a, h1, h2, h3 {
