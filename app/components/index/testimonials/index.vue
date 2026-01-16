@@ -2,13 +2,12 @@
 <script setup lang="ts">
 import { type IReview } from '~/types/testimonials';
 
-const { getLocale } = useI18n();
+const { locale } = useI18n();
 
-const locale = getLocale();
 
 const { data: reviews } = await useFetch<IReview[]>('/api/testimonials', {
-  query: { lang: locale },
-  key: `testimonials-list-${locale}`,
+  query: { lang: locale.value },
+  key: `testimonials-list-${locale.value}`,
 });
 </script>
 

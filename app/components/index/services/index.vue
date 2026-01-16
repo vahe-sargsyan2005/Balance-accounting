@@ -1,7 +1,6 @@
 <script setup lang="ts">
-const { $getLocale} = useI18n()
+const { locale } = useI18n()
 
-const locale = $getLocale()
 
 const { data: services } = await useFetch('/api/services', {
   query: { lang: locale },

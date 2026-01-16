@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { getLocaleFiles } from './i18n/i18n.helpers'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   ssr: false,
@@ -11,20 +12,20 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/icon',
-    'nuxt-i18n-micro',
     '@nuxt/fonts',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@nuxtjs/i18n'
   ],
+
 
   i18n: {
     locales: [
-      { code: 'hy', iso: 'hy-AM', dir: 'ltr', displayName: 'Հայերեն' },
-      { code: 'ru', iso: 'ru-RU', dir: 'ltr', displayName: 'Русский' },
-      { code: 'en', iso: 'en-US', dir: 'ltr', displayName: 'English' }
+      { code: 'hy', iso: 'hy-AM',  displayName: 'Հայերեն', files: getLocaleFiles('hy') },
+      { code: 'ru', iso: 'ru-RU', displayName: 'Русский', files: getLocaleFiles('ru') },
+      { code: 'en', iso: 'en-US', displayName: 'English', files: getLocaleFiles('en') }
     ],
-    defaultLocale: 'en',
-    translationDir: 'locales',
-    meta: true,
+    defaultLocale: 'hy',
+    strategy: 'prefix_except_default',
   },
 
   fonts: {
