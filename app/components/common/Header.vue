@@ -41,7 +41,6 @@ const academyLinks = computed(() => {
   })
 })
 
-// Scroll Logic
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const handleScroll = () => { isScrolled.value = window.scrollY > 50 }
@@ -141,7 +140,12 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           </div>
           <span class="text-sm hidden xl:block">{{ appConfig.global.phone }}</span>
         </a>
-        <UiButtonCta :to="'#contact'" :text="$t('header.letsChat')" />
+        <UiButton
+            to="#contact"
+            mode="split"
+
+            :label="$t('header.letsChat')"
+        />
       </div>
 
       <button class="lg:hidden text-[#001120] p-2 z-50 relative focus:outline-none" @click="isMobileMenuOpen = !isMobileMenuOpen">

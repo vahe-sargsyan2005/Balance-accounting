@@ -1,16 +1,16 @@
 <template>
     <div>
-<!--      <Hero/>-->
-<!--      <IndexExperienceImpact/>-->
-<!--      <IndexAboutUs/>-->
-<!--      <IndexServices/>-->
-<!--      <Process/>-->
-<!--      <CourseCoursesSection/>-->
-<!--      <Cases/>-->
-<!--      <TeamSection/>-->
-<!--      <CareerCareersSection/>-->
-<!--      <IndexFaqSection/>-->
-<!--      <IndexTestimonials/>-->
-<!--      <ContactSection/>-->
+      <Hero/>
+      <IndexExperienceImpact/>
+      <IndexAboutUs/>
+      <IndexServices/>
+      <Process/>
+      <CourseCoursesSection/>
+      <Cases/>
+      <TeamSection/>
+      <CareerCareersSection/>
+      <IndexFaqSection/>
+      <IndexTestimonials/>
+      <ContactSection/>
     </div>
 </template>
