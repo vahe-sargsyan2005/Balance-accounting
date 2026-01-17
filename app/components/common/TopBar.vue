@@ -55,12 +55,12 @@ const currentLangLabel = computed(() => {
                 v-for="loc in (locales as any[])"
                 :key="loc.code"
                 :to="switchLocalePath(loc.code)"
-                @click="close"
                 class="px-3 py-2.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all text-left flex items-center justify-between group text-sm text-gray-700"
+                @click="close"
             >
               <div class="flex items-center gap-3">
                 <Icon :name="flags[loc.code] || 'lucide:globe'" size="20"/>
-                <span>{{ loc.name || loc.code.toUpperCase() }}</span>
+                <span>{{ loc.displayName }}</span>
               </div>
               <Icon v-if="locale === loc.code" name="i-lucide-check" size="16" class="text-blue-600" />
             </NuxtLink>

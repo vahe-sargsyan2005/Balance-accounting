@@ -91,8 +91,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                   v-for="item in serviceLinks"
                   :key="item.id"
                   :to="item.to"
-                  @click="close"
                   class="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 text-gray-700 hover:text-blue-700 transition-all group"
+                  @click="close"
               >
                 <div class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0 mt-0.5">
                   <Icon :name="item.icon" size="18" />
@@ -125,8 +125,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                   v-for="item in academyLinks"
                   :key="item.id"
                   :to="item.to"
-                  @click="close"
                   class="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50 text-gray-700 hover:text-green-700 transition-all group"
+                  @click="close"
               >
                 <div class="w-9 h-9 rounded-full bg-green-50 text-green-600 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-colors flex-shrink-0">
                   <Icon :name="item.icon" size="18" />
@@ -147,9 +147,21 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       </nav>
 
       <div class="hidden xl:flex items-center gap-6">
-        <a :href="`tel:${appConfig.global.phone}`" class="hidden 2xl:flex items-center gap-3 text-[#001120] font-bold hover:text-blue-600 transition-colors group">
-          <UiButton icon="i-lucide-phone" mode="icon-only" variant="outline" shape="pill" size="sm"/>
-          <span class="text-sm">{{ appConfig.global.phone }}</span>
+        <a
+            :href="`tel:${appConfig.global.phone}`"
+            class="hidden 2xl:flex items-center gap-3 text-[#001120] font-bold transition-colors group"
+        >
+          <UiButton
+              icon="i-lucide-phone"
+              mode="icon-only"
+              variant="outline"
+              shape="pill"
+              size="sm"
+              class="group-hover:border-blue-600 group-hover:text-blue-600 transition-all duration-300"
+          />
+          <span class="text-sm group-hover:text-blue-600 transition-colors duration-300">
+      {{ appConfig.global.phone }}
+    </span>
         </a>
         <UiButton
             to="#contact"
@@ -160,22 +172,22 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
       <button
           class="xl:hidden text-[#001120] p-2 z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
           aria-label="Toggle Menu"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
       >
         <div class="w-6 flex flex-col items-end gap-[5px] transition-all duration-300">
           <span
               class="h-[2px] bg-current rounded-full transition-all duration-300 w-full"
               :class="{ 'rotate-45 translate-y-[7px]': isMobileMenuOpen }"
-          ></span>
+          />
           <span
               class="h-[2px] bg-current rounded-full transition-all duration-300 w-2/3"
               :class="{ 'opacity-0': isMobileMenuOpen }"
-          ></span>
+          />
           <span
               class="h-[2px] bg-current rounded-full transition-all duration-300 w-full"
               :class="{ '-rotate-45 -translate-y-[7px]': isMobileMenuOpen }"
-          ></span>
+          />
         </div>
       </button>
 
@@ -186,27 +198,27 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         <div class="flex flex-col h-full pt-28 pb-10 px-6 overflow-y-auto">
 
           <nav class="flex flex-col items-start gap-6 w-full mb-auto">
-            <NuxtLink to="#services" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+            <NuxtLink to="#services" class="group w-full border-b border-gray-100 pb-5" @click="isMobileMenuOpen = false">
               <div class="flex items-center justify-between w-full text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
                 {{ $t('header.services') }}
                 <Icon name="i-lucide-arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-blue-600" size="24"/>
               </div>
             </NuxtLink>
 
-            <NuxtLink to="/courses" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+            <NuxtLink to="/courses" class="group w-full border-b border-gray-100 pb-5" @click="isMobileMenuOpen = false">
               <div class="flex items-center justify-between w-full text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
                 {{ $t('header.academy') }}
                 <Icon name="i-lucide-arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-blue-600" size="24"/>
               </div>
             </NuxtLink>
 
-            <NuxtLink to="#about-us" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+            <NuxtLink to="#about-us" class="group w-full border-b border-gray-100 pb-5" @click="isMobileMenuOpen = false">
               <div class="text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
                 {{ $t('header.company') }}
               </div>
             </NuxtLink>
 
-            <NuxtLink to="#faq" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+            <NuxtLink to="#faq" class="group w-full border-b border-gray-100 pb-5" @click="isMobileMenuOpen = false">
               <div class="text-xl sm:text-3xl text-[#001120] hover:text-blue-600 transition-colors">
                 {{ $t('header.faq') }}
               </div>
