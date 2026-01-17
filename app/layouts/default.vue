@@ -1,7 +1,7 @@
 <template>
   <div>
     <CommonTopBar />
-<!--    <AppHeader/>-->
+   <CommonHeader />
         <main class="flex-1 w-full">
           <slot />
         </main>

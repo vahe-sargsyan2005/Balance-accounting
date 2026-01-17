@@ -1,11 +1,12 @@
+export interface IServiceFeature {
+    title: string;
+    features: string[];
+}
+
 export interface IService {
     id: number;
     iconName: string;
+    image: string;
     title: string;
     features: string[];
-    image: string;
-}
-
-export interface IServiceApiResponse {
-    [key: string]: IService[];
 }
