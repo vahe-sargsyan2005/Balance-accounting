@@ -2,9 +2,10 @@
 import type { IService } from '~/types/services'
 import type { ICourse } from '~/types/course'
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const appConfig = useAppConfig()
 
+// --- Data Fetching ---
 const { data: services } = await useFetch<IService[]>('/api/services', {
   query: { lang: locale },
   watch: [locale],
@@ -17,6 +18,7 @@ const { data: courses } = await useFetch<ICourse[]>('/api/courses', {
   key: 'header-courses-list'
 })
 
+// --- Data Mapping ---
 const serviceLinks = computed(() => {
   if (!services.value) return []
   return services.value.map(service => ({
@@ -41,9 +43,18 @@ const academyLinks = computed(() => {
   })
 })
 
+// --- Logic ---
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const handleScroll = () => { isScrolled.value = window.scrollY > 50 }
+
+// Prevent background scrolling when mobile menu is open
+watch(isMobileMenuOpen, (val) => {
+  if (import.meta.client) {
+    document.body.style.overflow = val ? 'hidden' : ''
+  }
+})
+
 onMounted(() => window.addEventListener('scroll', handleScroll))
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
@@ -51,13 +62,16 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 <template>
   <header
       class="sticky top-0 z-50 w-full transition-all duration-300 bg-white border-b border-transparent"
-      :class="{ 'shadow-lg shadow-gray-100/50 py-3 border-gray-100': isScrolled, 'py-6 md:py-8': !isScrolled }"
+      :class="{
+        'shadow-lg shadow-gray-100/50 py-3 border-gray-100': isScrolled,
+        'py-4 md:py-6 lg:py-8': !isScrolled
+      }"
   >
     <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
 
-      <UiLogo />
+      <UiLogo class="relative z-50" />
 
-      <nav class="hidden lg:flex items-center gap-8 xl:gap-10">
+      <nav class="hidden xl:flex items-center gap-6 2xl:gap-10">
 
         <UiDropdown
             name="header-services"
@@ -136,12 +150,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         </NuxtLink>
       </nav>
 
-      <div class="hidden lg:flex items-center gap-8">
-        <a :href="`tel:${appConfig.global.phone}`" class="flex items-center gap-3 text-[#001120] font-bold hover:text-blue-600 transition-colors group">
-          <div class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all">
-            <Icon name="i-lucide-phone" size="18" />
-          </div>
-          <span class="text-sm hidden xl:block">{{ appConfig.global.phone }}</span>
+      <div class="hidden xl:flex items-center gap-6">
+        <a :href="`tel:${appConfig.global.phone}`" class="hidden 2xl:flex items-center gap-3 text-[#001120] font-bold hover:text-blue-600 transition-colors group">
+          <UiButton icon="i-lucide-phone" mode="icon-only" variant="outline" shape="pill" size="sm"/>
+          <span class="text-sm">{{ appConfig.global.phone }}</span>
         </a>
         <UiButton
             to="#contact"
@@ -150,20 +162,78 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         />
       </div>
 
-      <button class="lg:hidden text-[#001120] p-2 z-50 relative focus:outline-none" @click="isMobileMenuOpen = !isMobileMenuOpen">
-        <Icon :name="isMobileMenuOpen ? 'i-lucide-x' : 'i-lucide-menu'" size="32" class="transition-all duration-300" />
+      <button
+          class="xl:hidden text-[#001120] p-2 z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          aria-label="Toggle Menu"
+      >
+        <div class="w-6 flex flex-col items-end gap-[5px] transition-all duration-300">
+          <span
+              class="h-[2px] bg-current rounded-full transition-all duration-300 w-full"
+              :class="{ 'rotate-45 translate-y-[7px]': isMobileMenuOpen }"
+          ></span>
+          <span
+              class="h-[2px] bg-current rounded-full transition-all duration-300 w-2/3"
+              :class="{ 'opacity-0': isMobileMenuOpen }"
+          ></span>
+          <span
+              class="h-[2px] bg-current rounded-full transition-all duration-300 w-full"
+              :class="{ '-rotate-45 -translate-y-[7px]': isMobileMenuOpen }"
+          ></span>
+        </div>
       </button>
 
       <div
-          class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center gap-8 transition-transform duration-500 lg:hidden"
-          :class="isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'"
+          class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col transition-all duration-500 xl:hidden"
+          :class="isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'"
       >
-        <nav class="flex flex-col items-center gap-8">
-          <NuxtLink to="#services" @click="isMobileMenuOpen = false" class="text-3xl font-extrabold text-[#001120] hover:text-blue-600">{{ $t('header.services') }}</NuxtLink>
-          <NuxtLink to="/courses" @click="isMobileMenuOpen = false" class="text-3xl font-extrabold text-[#001120] hover:text-blue-600">{{ $t('header.academy') }}</NuxtLink>
-          <NuxtLink to="#about-us" @click="isMobileMenuOpen = false" class="text-3xl font-extrabold text-[#001120] hover:text-blue-600">{{ $t('header.company') }}</NuxtLink>
-        </nav>
+        <div class="flex flex-col h-full pt-28 pb-10 px-6 overflow-y-auto">
+
+          <nav class="flex flex-col items-start gap-6 w-full mb-auto">
+            <NuxtLink to="#services" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+              <div class="flex items-center justify-between w-full text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
+                {{ $t('header.services') }}
+                <Icon name="i-lucide-arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-blue-600" size="24"/>
+              </div>
+            </NuxtLink>
+
+            <NuxtLink to="/courses" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+              <div class="flex items-center justify-between w-full text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
+                {{ $t('header.academy') }}
+                <Icon name="i-lucide-arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-blue-600" size="24"/>
+              </div>
+            </NuxtLink>
+
+            <NuxtLink to="#about-us" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+              <div class="text-xl sm:text-3xl  text-[#001120] hover:text-blue-600 transition-colors">
+                {{ $t('header.company') }}
+              </div>
+            </NuxtLink>
+
+            <NuxtLink to="#faq" @click="isMobileMenuOpen = false" class="group w-full border-b border-gray-100 pb-5">
+              <div class="text-xl sm:text-3xl text-[#001120] hover:text-blue-600 transition-colors">
+                {{ $t('header.faq') }}
+              </div>
+            </NuxtLink>
+          </nav>
+
+          <div class="mt-8 flex flex-col gap-3">
+            <a :href="`tel:${appConfig.global.phone}`" class="text-xl font-bold text-gray-500 hover:text-blue-600 transition-colors">
+              {{ appConfig.global.phone }}
+            </a>
+
+            <UiButton
+                to="#contact"
+                block
+                :label="$t('header.lets_chat')"
+                icon="i-lucide-message-circle"
+                @click="isMobileMenuOpen = false"
+            />
+          </div>
+
+        </div>
       </div>
+
     </div>
   </header>
 </template>

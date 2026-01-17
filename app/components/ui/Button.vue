@@ -54,10 +54,10 @@ const solidClasses = computed(() => {
   let sizeClass = ''
   if (props.mode === 'icon-only') {
     switch (props.size) {
-      case 'sm': sizeClass = 'w-8 h-8 text-xs'; break
-      case 'lg': sizeClass = 'w-14 h-14 text-lg'; break
-      case 'xl': sizeClass = 'w-16 h-16 text-xl'; break
-      default: sizeClass = 'w-11 h-11 text-base'; break
+      case 'sm': sizeClass = 'p-2 text-xs'; break
+      case 'lg': sizeClass = 'p-4 text-lg'; break
+      case 'xl': sizeClass = 'p-5 text-xl'; break
+      default: sizeClass = 'p-3 text-sm'; break
     }
   } else {
     switch (props.size) {
