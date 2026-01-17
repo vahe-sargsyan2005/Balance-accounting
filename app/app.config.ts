@@ -1,6 +1,6 @@
 export default defineAppConfig({
     global: {
-        name: 'Horqur Accounting',
+        name: 'Horqur',
         email: 'info@horqur.am',
         address: 'Երևան, Հայաստան',
         phone: '+374 99 999 999',

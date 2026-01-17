@@ -2,10 +2,9 @@
 import type { IService } from '~/types/services'
 import type { ICourse } from '~/types/course'
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const appConfig = useAppConfig()
 
-// --- Data Fetching ---
 const { data: services } = await useFetch<IService[]>('/api/services', {
   query: { lang: locale },
   watch: [locale],
@@ -18,7 +17,6 @@ const { data: courses } = await useFetch<ICourse[]>('/api/courses', {
   key: 'header-courses-list'
 })
 
-// --- Data Mapping ---
 const serviceLinks = computed(() => {
   if (!services.value) return []
   return services.value.map(service => ({
@@ -43,12 +41,10 @@ const academyLinks = computed(() => {
   })
 })
 
-// --- Logic ---
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const handleScroll = () => { isScrolled.value = window.scrollY > 50 }
 
-// Prevent background scrolling when mobile menu is open
 watch(isMobileMenuOpen, (val) => {
   if (import.meta.client) {
     document.body.style.overflow = val ? 'hidden' : ''
