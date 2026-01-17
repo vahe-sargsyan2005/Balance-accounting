@@ -2,7 +2,7 @@
 import type { IService } from '~/types/services'
 import type { ICourse } from '~/types/course'
 
-const { t, locale } = useI18n()
+const { locale } = useI18n()
 const appConfig = useAppConfig()
 
 const { data: services } = await useFetch<IService[]>('/api/services', {
@@ -130,6 +130,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
         <NuxtLink to="/#about-us" class="text-sm font-bold text-gray-600 hover:text-blue-600 uppercase tracking-wide transition-colors">
           {{ $t('header.company') }}
+        </NuxtLink>
+        <NuxtLink to="/#faq" class="text-sm font-bold text-gray-600 hover:text-blue-600 uppercase tracking-wide transition-colors">
+          {{ $t('header.faq') }}
         </NuxtLink>
       </nav>
 

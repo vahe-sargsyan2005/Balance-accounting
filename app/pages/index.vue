@@ -9,8 +9,10 @@
       <Cases/>
       <TeamSection/>
       <CareerCareersSection/>
-      <IndexFaqSection/>
       <IndexTestimonials/>
+      <IndexFaqSection/>
       <ContactSection/>
     </div>
 </template>
+<script setup lang="ts">
+</script>
