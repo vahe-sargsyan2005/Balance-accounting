@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopBar />
+    <CommonTopBar />
     <AppHeader/>
         <main class="flex-1 w-full">
           <slot />

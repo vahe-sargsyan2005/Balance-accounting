@@ -1,12 +1,13 @@
 export default defineAppConfig({
     global: {
-        name: 'Balance Accounting',
-        logo: '/logo.png',
-        favicon: '/favicon.ico',
-        email: 'w33bv.gl@gmail.com',
-        phone: '+374 (94) 161-331',
+        name: 'Horqur Accounting',
+        email: 'info@horqur.am',
+        address: 'Երևան, Հայաստան',
+        phone: '+374 99 999 999',
         url: 'https://balance.example.com',
         author: '@Vahesargsyan2005',
+        logo: '/logo.png',
+        favicon: '/favicon.ico',
     },
     social: [
         { name: 'Facebook', href: 'https://facebook.com/balanceaccounting', icon: 'lucide:facebook' },
