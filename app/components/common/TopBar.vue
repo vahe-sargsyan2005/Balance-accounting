@@ -18,7 +18,7 @@ const currentLangLabel = computed(() => {
 </script>
 
 <template>
-  <div class="bg-[#001120] text-gray-300 text-xs py-3 border-b border-gray-800 hidden md:block relative z-[60]">
+  <div class="bg-gray-900 text-gray-300 text-xs py-3 border-b border-gray-800 hidden md:block relative z-[60]">
     <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
 
       <div class="flex items-center gap-6">
