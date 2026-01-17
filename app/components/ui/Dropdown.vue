@@ -2,28 +2,37 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
-  isOpen: {
-    type: Boolean,
+  // Уникальное имя дропдауна (ОБЯЗАТЕЛЬНО)
+  name: {
+    type: String,
     required: true
   },
   align: {
     type: String,
-    default: 'left',
-    validator: (value: string) => ['left', 'right'].includes(value)
+    default: 'left', // 'left' | 'right'
   },
   widthClass: {
     type: String,
     default: 'w-64'
+  },
+  // Если передать высоту, включится скролл
+  maxHeight: {
+    type: String,
+    default: '' // например 'max-h-[350px]'
   }
 })
 
-const emit = defineEmits(['toggle', 'close'])
-
+// Подключаем глобальное управление
+const { activeDropdown, toggleDropdown, closeAll } = useUi()
 const containerRef = ref<HTMLElement | null>(null)
 
+// Вычисляем, открыт ли ЭТОТ конкретный дропдаун
+const isOpen = computed(() => activeDropdown.value === props.name)
+
+// Логика клика снаружи
 const handleClickOutside = (e: MouseEvent) => {
-  if (props.isOpen && containerRef.value && !containerRef.value.contains(e.target as Node)) {
-    emit('close')
+  if (isOpen.value && containerRef.value && !containerRef.value.contains(e.target as Node)) {
+    closeAll()
   }
 }
 
@@ -38,8 +47,9 @@ onUnmounted(() => {
 
 <template>
   <div ref="containerRef" class="relative inline-block text-left">
-    <div @click.stop="emit('toggle')">
-      <slot name="trigger" />
+
+    <div @click.stop="toggleDropdown(props.name)">
+      <slot name="trigger" :is-open="isOpen" />
     </div>
 
     <transition
@@ -52,16 +62,36 @@ onUnmounted(() => {
     >
       <div
           v-if="isOpen"
-          class="absolute z-[100] mt-3 origin-top rounded-2xl bg-white shadow-xl ring-1 ring-black/5 focus:outline-none overflow-hidden"
+          class="absolute z-[100] mt-2 origin-top rounded-xl bg-white shadow-xl ring-1 ring-black/5 focus:outline-none overflow-hidden"
           :class="[
            align === 'right' ? 'right-0' : 'left-0',
            widthClass
         ]"
       >
-        <div class="py-1">
-          <slot name="content" />
+        <div
+            class="py-1 overflow-y-auto custom-scrollbar"
+            :class="maxHeight"
+        >
+          <slot name="content" :close="closeAll" />
         </div>
       </div>
     </transition>
   </div>
 </template>
+
+<style scoped>
+/* Стили скроллбара живут внутри компонента */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Серый цвет ползунка */
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+</style>
