@@ -56,8 +56,8 @@ const currentLangLabel = computed(() => {
                 class="px-3 py-2.5 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all text-left flex items-center justify-between group text-sm text-gray-700"
             >
               <div class="flex items-center gap-3">
-                <Icon :name="flags[loc.code] || 'lucide:globe'" size="20" class="rounded-full" />
-                <span class="font-semibold">{{ loc.name || loc.code.toUpperCase() }}</span>
+                <Icon :name="flags[loc.code] || 'lucide:globe'" size="20"/>
+                <span>{{ loc.displayName || loc.code.toUpperCase() }}</span>
               </div>
 
               <Icon
