@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue'
-
 interface Props {
   to?: string
   href?: string
@@ -10,10 +8,12 @@ interface Props {
   label?: string
   icon?: string
 
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white'
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'white' | 'danger'
   mode?: 'solid' | 'split' | 'icon-only'
-  shape?: 'default' | 'pill' | 'square' | 'circle'
+  shape?: 'default' | 'pill' | 'square'
   size?: 'sm' | 'md' | 'lg' | 'xl'
+
+  iconPosition?: 'left' | 'right'
 
   loading?: boolean
   disabled?: boolean
@@ -25,6 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
   mode: 'solid',
   shape: 'default',
   size: 'md',
+  iconPosition: 'right',
   type: 'button'
 })
 
@@ -34,94 +35,101 @@ const componentTag = computed(() => {
   return 'button'
 })
 
-const baseClasses = computed(() => {
+const wrapperClasses = computed(() => {
   return [
-    'relative inline-flex items-center justify-center transition-all duration-300 font-bold focus:outline-none select-none',
+    'relative inline-flex items-center justify-center transition-all duration-300 font-bold focus:outline-none select-none group',
     props.disabled || props.loading ? 'opacity-60 cursor-not-allowed pointer-events-none' : 'cursor-pointer',
     props.block ? 'w-full flex' : '',
-    props.mode === 'split' ? 'gap-1.5 group' : 'gap-2'
+    props.mode === 'split' ? 'p-0 bg-transparent shadow-none' : 'gap-2',
+    props.mode !== 'split' ? getShapeClass(props.shape) : ''
   ]
 })
 
-const sizeClasses = computed(() => {
+const solidClasses = computed(() => {
   if (props.mode === 'split') return ''
 
+  let sizeClass = ''
   if (props.mode === 'icon-only') {
     switch (props.size) {
-      case 'sm': return 'w-8 h-8 text-xs'
-      case 'lg': return 'w-14 h-14 text-lg'
-      case 'xl': return 'w-16 h-16 text-xl'
-      default: return 'w-11 h-11 text-base' // md
+      case 'sm': sizeClass = 'w-8 h-8 text-xs'; break
+      case 'lg': sizeClass = 'w-14 h-14 text-lg'; break
+      case 'xl': sizeClass = 'w-16 h-16 text-xl'; break
+      default: sizeClass = 'w-11 h-11 text-base'; break
+    }
+  } else {
+    switch (props.size) {
+      case 'sm': sizeClass = 'px-4 py-2 text-xs'; break
+      case 'lg': sizeClass = 'px-8 py-4 text-lg'; break
+      case 'xl': sizeClass = 'px-10 py-5 text-xl'; break
+      default: sizeClass = 'px-6 py-3.5 text-sm'; break
     }
   }
 
-  switch (props.size) {
-    case 'sm': return 'px-4 py-2 text-xs'
-    case 'lg': return 'px-8 py-4 text-lg'
-    case 'xl': return 'px-10 py-5 text-xl'
-    default: return 'px-6 py-3.5 text-sm'
+  let colorClass = ''
+  switch (props.variant) {
+    case 'primary': colorClass = 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 border border-transparent'; break
+    case 'secondary': colorClass = 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-transparent'; break
+    case 'outline': colorClass = 'bg-transparent text-gray-600 border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600'; break
+    case 'ghost': colorClass = 'bg-transparent text-gray-600 hover:bg-blue-50 hover:text-blue-600 border border-transparent'; break
+    case 'white': colorClass = 'bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm'; break
+    case 'danger': colorClass = 'bg-red-50 text-red-600 hover:bg-red-100 border border-transparent'; break
   }
+
+  return [sizeClass, colorClass]
 })
 
-const shapeClasses = computed(() => {
-  if (props.mode === 'split') return ''
-  switch (props.shape) {
-    case 'pill': return 'rounded-full'
-    case 'circle': return 'rounded-full'
-    case 'square': return 'rounded-none'
-    default: return 'rounded-2xl'
-  }
-})
+function getShapeClass(shape: string) {
+  if (shape === 'pill') return 'rounded-full'
+  if (shape === 'square') return 'rounded-none'
+  return 'rounded-2xl'
+}
 
-const colorClasses = computed(() => {
-  if (props.mode === 'split') return ''
+const splitPartBase = 'flex items-center justify-center transition-all duration-300 h-full relative z-10'
 
+const splitColorClasses = computed(() => {
   switch (props.variant) {
     case 'primary':
-      return 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 border border-transparent'
+      return 'bg-blue-600 text-white group-hover:bg-blue-700 border-transparent'
     case 'secondary':
-      return 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-transparent'
+      return 'bg-gray-100 text-gray-900 group-hover:bg-gray-200 border-transparent'
     case 'outline':
-      return 'bg-transparent text-gray-600 border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600'
+      return 'bg-white text-gray-700 border-2 border-gray-200 group-hover:border-blue-600 group-hover:text-blue-600'
     case 'ghost':
-      return 'bg-transparent text-gray-600 hover:bg-blue-50 hover:text-blue-600 border border-transparent'
-    case 'white':
-      return 'bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm'
-    default: return ''
+      return 'bg-transparent text-gray-600 group-hover:bg-blue-50 group-hover:text-blue-600 border-transparent'
+    case 'danger':
+      return 'bg-red-600 text-white group-hover:bg-red-700 border-transparent'
+    default: return 'bg-blue-600 text-white'
   }
 })
 
-const splitLeftClasses = computed(() => {
-  const base = 'flex items-center justify-center transition-all duration-300 h-full'
-
-  const shape = props.shape === 'pill'
-      ? 'rounded-l-full'
-      : 'rounded-bl-3xl rounded-tr-3xl rounded-tl-lg rounded-br-lg'
-
-  const size = props.size === 'lg' ? 'py-4 px-8' : props.size === 'sm' ? 'py-2 px-4' : 'py-3.5 px-6'
-
-  const color = props.variant === 'outline'
-      ? 'border-2 border-gray-200 text-gray-700 bg-white group-hover:border-blue-600 group-hover:text-blue-600'
-      : 'bg-blue-600 text-white group-hover:bg-blue-700'
-
-  return [base, shape, size, color]
+const splitSeparatorClass = computed(() => {
+  if (props.variant === 'outline') return 'border-gray-200 group-hover:border-blue-600'
+  if (props.variant === 'secondary') return 'border-gray-300'
+  return 'border-white/20'
 })
 
-const splitRightClasses = computed(() => {
-  const base = 'flex items-center justify-center transition-all duration-300 h-full'
-
-  const shape = props.shape === 'pill'
-      ? 'rounded-r-full aspect-square'
-      : 'rounded-tl-3xl rounded-br-3xl rounded-tr-lg rounded-bl-lg aspect-square'
-
-  const size = props.size === 'lg' ? 'p-4' : props.size === 'sm' ? 'p-2' : 'p-3.5'
-
-  const color = props.variant === 'outline'
-      ? 'border-2 border-gray-200 text-gray-700 bg-white group-hover:border-blue-600 group-hover:text-blue-600'
-      : 'bg-blue-600 text-white group-hover:bg-blue-700'
-
-  return [base, shape, size, color]
+const splitMainShape = computed(() => {
+  if (props.shape === 'pill') {
+    return props.iconPosition === 'left' ? 'rounded-r-full' : 'rounded-l-full'
+  }
+  if (props.iconPosition === 'right') {
+    return 'rounded-bl-3xl rounded-tr-3xl rounded-br-none'
+  }
+  return 'rounded-r-2xl rounded-tl-3xl rounded-br-3xl rounded-bl-none'
 })
+
+const splitIconShape = computed(() => {
+  if (props.shape === 'pill') {
+    return props.iconPosition === 'left' ? 'rounded-l-full' : 'rounded-r-full'
+  }
+  if (props.iconPosition === 'right') {
+    return 'rounded-br-3xl rounded-tl-3xl rounded-bl-none'
+  }
+  return 'rounded-l-3xl rounded-tr-3xl rounded-br-none'
+})
+
+const splitMainSize = computed(() => props.size === 'lg' ? 'py-4 px-10 text-lg' : props.size === 'sm' ? 'py-2 px-5 text-xs' : 'py-3.5 px-4 text-sm')
+const splitIconSize = computed(() => props.size === 'lg' ? 'p-4' : props.size === 'sm' ? 'p-2' : 'p-3.5')
 
 </script>
 
@@ -132,18 +140,44 @@ const splitRightClasses = computed(() => {
       :href="href"
       :target="target"
       :type="!to && !href ? type : undefined"
-      :class="[baseClasses, sizeClasses, shapeClasses, colorClasses]"
+      :class="[wrapperClasses, solidClasses]"
   >
 
     <template v-if="mode === 'split'">
-      <span :class="splitLeftClasses">
-        <Icon v-if="loading" name="i-lucide-loader" class="animate-spin mr-2" />
-        <slot>{{ label }}</slot>
-      </span>
+      <div class="flex w-full h-full" :class="iconPosition === 'left' ? 'flex-row-reverse' : 'flex-row'">
 
-      <span :class="splitRightClasses">
-        <Icon :name="icon || 'i-lucide-arrow-right'" class="transition-transform group-hover:translate-x-1" :class="size === 'lg' ? 'w-6 h-6' : 'w-5 h-5'" />
-      </span>
+        <span
+            :class="[splitPartBase, splitColorClasses, splitMainShape, splitMainSize, 'flex-grow']"
+        >
+          <Icon v-if="loading" name="i-lucide-loader" class="animate-spin mr-2" />
+          <slot>{{ label }}</slot>
+        </span>
+
+        <span
+            :class="[
+            splitPartBase,
+            splitColorClasses,
+            splitIconShape,
+            splitIconSize,
+            splitSeparatorClass,
+            'border-l transition-colors duration-300 aspect-square ml-2'
+          ]"
+                    :style="{
+            borderLeftWidth: iconPosition === 'right' ? '1px' : '0',
+            borderRightWidth: iconPosition === 'left' ? '1px' : '0'
+          }"
+                >
+          <Icon
+              :name="icon || 'i-lucide-arrow-right'"
+              class="transition-transform duration-300"
+              :class="[
+              size === 'lg' ? 'w-6 h-6' : 'w-5 h-5',
+              iconPosition === 'right' ? 'group-hover:translate-x-1' : 'group-hover:-translate-x-1'
+            ]"
+          />
+        </span>
+
+      </div>
     </template>
 
 
@@ -156,14 +190,18 @@ const splitRightClasses = computed(() => {
     <template v-else>
       <Icon v-if="loading" name="i-lucide-loader" class="animate-spin absolute" />
 
-      <span class="flex items-center gap-2" :class="{ 'opacity-0': loading }">
-        <slot name="prefix">
-           <Icon v-if="icon" :name="icon" class="w-5 h-5" />
+      <span class="flex items-center gap-2"
+            :class="[loading ? 'opacity-0' : '', iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse']">
+
+        <slot name="suffix">
+           <Icon v-if="icon && iconPosition === 'right'" :name="icon" class="w-5 h-5" />
         </slot>
 
         <slot>{{ label }}</slot>
 
-        <slot name="suffix" />
+        <slot name="prefix">
+           <Icon v-if="icon && iconPosition === 'left'" :name="icon" class="w-5 h-5" />
+        </slot>
       </span>
     </template>
 

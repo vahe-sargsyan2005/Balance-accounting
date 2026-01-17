@@ -143,7 +143,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         <UiButton
             to="#contact"
             mode="split"
-
             :label="$t('header.letsChat')"
         />
       </div>
