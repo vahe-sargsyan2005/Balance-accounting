@@ -55,7 +55,7 @@ const toggleItem = (index: number) => {
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100"
                     alt="Reviewer"
                     class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-md"
-                />
+                >
                 <div class="absolute -bottom-1 -right-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">
                   4.9
                 </div>
@@ -63,7 +63,7 @@ const toggleItem = (index: number) => {
 
               <div>
                 <div class="flex text-yellow-400 text-xs mb-1">
-                  <Icon name="i-lucide-star" v-for="i in 5" :key="i" class="fill-current w-3 h-3" />
+                  <Icon v-for="i in 5" :key="i" name="i-lucide-star" class="fill-current w-3 h-3" />
                 </div>
                 <p class="text-gray-500 text-sm font-medium leading-none">
                   {{ $t('faq.ratingText') }}
@@ -80,8 +80,8 @@ const toggleItem = (index: number) => {
                 class="py-6 first:pt-0"
             >
               <button
-                  @click="toggleItem(index)"
                   class="w-full flex justify-between items-center text-left focus:outline-none group"
+                  @click="toggleItem(index)"
               >
               <span
                   class="text-lg md:text-xl font-bold pr-8 transition-colors duration-300"

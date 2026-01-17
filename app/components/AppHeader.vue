@@ -85,8 +85,8 @@ const menuItems = computed(() => [
       </div>
 
       <button
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
           class="lg:hidden text-[#001120] p-2 z-50 relative"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
       >
         <Icon :name="isMobileMenuOpen ? 'i-lucide-x' : 'i-lucide-menu'" size="28" />
       </button>
@@ -100,8 +100,8 @@ const menuItems = computed(() => [
               v-for="(item, index) in menuItems"
               :key="index"
               :to="item.link"
-              @click="isMobileMenuOpen = false"
               class="text-2xl font-bold text-[#001120]"
+              @click="isMobileMenuOpen = false"
           >
             {{ item.label }}
           </NuxtLink>
@@ -109,8 +109,8 @@ const menuItems = computed(() => [
         <div class="mt-8">
           <NuxtLink
               to="/contact"
-              @click="isMobileMenuOpen = false"
               class="bg-blue-600 text-white font-bold py-4 px-10 rounded-full text-xl"
+              @click="isMobileMenuOpen = false"
           >
             {{ $t('header.letsChat') }}
           </NuxtLink>

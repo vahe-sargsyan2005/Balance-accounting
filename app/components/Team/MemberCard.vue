@@ -14,7 +14,7 @@ defineProps<{
             :src="member.image"
             :alt="member.name"
             class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
-        />
+        >
       </div>
     </div>
 

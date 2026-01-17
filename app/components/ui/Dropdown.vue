@@ -28,9 +28,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative inline-block text-left" ref="containerRef">
+  <div ref="containerRef" class="relative inline-block text-left">
     <div @click.stop="toggle">
-      <slot name="trigger" :isOpen="isOpen" />
+      <slot name="trigger" :is-open="isOpen" />
     </div>
 
     <transition

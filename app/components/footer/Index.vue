@@ -49,20 +49,20 @@ const socialIcons = [
         </div>
       </div>
 
-      <div class="border-t border-gray-800 mb-16"></div>
+      <div class="border-t border-gray-800 mb-16"/>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
 
         <div class="lg:col-span-5">
           <h3 class="text-xl font-bold mb-8">{{ $t('footer.subscribeTitle') }}</h3>
 
-          <form @submit.prevent="" class="space-y-6">
+          <form class="space-y-6" @submit.prevent="">
             <div class="relative group">
               <input
                   type="email"
                   :placeholder="$t('footer.emailPlaceholder')"
                   class="w-full bg-transparent border-b border-gray-700 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-              />
+              >
               <button class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2 text-white hover:text-blue-500 transition-colors uppercase text-sm font-bold tracking-wider">
                 {{ $t('footer.subscribeButton') }}
                 <Icon name="i-lucide-arrow-right" size="18" />
@@ -71,10 +71,10 @@ const socialIcons = [
 
             <div class="flex items-start gap-3">
               <input
-                  type="checkbox"
                   id="consent"
+                  type="checkbox"
                   class="mt-1 w-4 h-4 rounded border-gray-700 bg-transparent text-blue-600 focus:ring-offset-gray-900"
-              />
+              >
               <label for="consent" class="text-sm text-gray-500 cursor-pointer select-none leading-relaxed">
                 {{ $t('footer.consentText') }}
               </label>
@@ -120,7 +120,7 @@ const socialIcons = [
         </div>
       </div>
 
-      <div class="border-t border-gray-800 mb-10"></div>
+      <div class="border-t border-gray-800 mb-10"/>
 
       <div class="flex flex-col lg:flex-row justify-between items-end gap-10">
 

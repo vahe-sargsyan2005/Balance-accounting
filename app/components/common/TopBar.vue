@@ -54,8 +54,8 @@ const currentLangLabel = computed(() => {
                 v-for="loc in (locales as any[])"
                 :key="loc.code"
                 :to="switchLocalePath(loc.code)"
-                @click="close"
                 class="px-4 py-3 hover:bg-blue-50 hover:text-blue-600 transition-colors text-left flex items-center justify-between group text-sm text-gray-700"
+                @click="close"
             >
               <div class="flex items-center gap-3">
                 <span class="text-lg leading-none">{{ flags[loc.code] }}</span>

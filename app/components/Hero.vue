@@ -10,7 +10,7 @@ const partners = [
 <template>
   <section class="relative bg-white overflow-hidden pt-10 pb-16 lg:pt-20 lg:pb-24">
 
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"/>
 
     <div class="container mx-auto px-4 md:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -19,8 +19,8 @@ const partners = [
 
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-widest mb-8 border border-blue-100">
             <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"/>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"/>
             </span>
             {{ $t('hero.badge') }}
           </div>
@@ -78,9 +78,9 @@ const partners = [
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800&h=1000"
                 alt="Professional Accountant"
                 class="w-full h-full object-cover object-center"
-            />
+            >
 
-            <div class="absolute inset-0 bg-gradient-to-t from-[#001120]/60 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#001120]/60 via-transparent to-transparent"/>
           </div>
 
           <div class="absolute top-20 -left-6 lg:left-0 bg-white p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] animate-bounce-slow border border-gray-100 max-w-[200px]">
@@ -94,7 +94,7 @@ const partners = [
               </div>
             </div>
             <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-              <div class="h-full bg-green-500 w-[90%] rounded-full"></div>
+              <div class="h-full bg-green-500 w-[90%] rounded-full"/>
             </div>
           </div>
 
