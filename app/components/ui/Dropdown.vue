@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
 const props = defineProps({
-  // Уникальное имя дропдауна (ОБЯЗАТЕЛЬНО)
   name: {
     type: String,
     required: true
@@ -15,21 +12,17 @@ const props = defineProps({
     type: String,
     default: 'w-64'
   },
-  // Если передать высоту, включится скролл
   maxHeight: {
     type: String,
-    default: '' // например 'max-h-[350px]'
+    default: ''
   }
 })
 
-// Подключаем глобальное управление
 const { activeDropdown, toggleDropdown, closeAll } = useUi()
 const containerRef = ref<HTMLElement | null>(null)
 
-// Вычисляем, открыт ли ЭТОТ конкретный дропдаун
 const isOpen = computed(() => activeDropdown.value === props.name)
 
-// Логика клика снаружи
 const handleClickOutside = (e: MouseEvent) => {
   if (isOpen.value && containerRef.value && !containerRef.value.contains(e.target as Node)) {
     closeAll()
@@ -80,7 +73,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Стили скроллбара живут внутри компонента */
 .custom-scrollbar::-webkit-scrollbar {
   width: 5px;
 }
@@ -88,7 +80,7 @@ onUnmounted(() => {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1; /* Серый цвет ползунка */
+  background: #cbd5e1;
   border-radius: 10px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
