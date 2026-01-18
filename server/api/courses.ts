@@ -8,6 +8,7 @@ export default defineEventHandler((event) => {
     const courses = [
         {
             id: 1,
+            icon: 'i-lucide-coins',
             image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=400&h=300',
             data: {
                 en: { title: 'Financial Literacy 101', desc: 'Master the basics of personal finance and budgeting.', level: 'Beginner', duration: '4 weeks', price: '$199' },
@@ -17,6 +18,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 2,
+            icon: 'i-lucide-trending-up',
             image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=400&h=300',
             data: {
                 en: { title: 'Investment Strategies', desc: 'Learn how to build a diversified portfolio.', level: 'Advanced', duration: '6 weeks', price: '$399' },
@@ -26,6 +28,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 3,
+            icon: 'i-lucide-bitcoin',
             image: 'https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?auto=format&fit=crop&q=80&w=400&h=300',
             data: {
                 en: { title: 'Crypto & Blockchain', desc: 'Understanding the future of digital assets.', level: 'Intermediate', duration: '3 weeks', price: '$249' },
@@ -37,6 +40,7 @@ export default defineEventHandler((event) => {
 
     return courses.map(c => ({
         id: c.id,
+        icon: c.icon,
         image: c.image,
         // @ts-ignore
         ...c.data[lang] || c.data['en']

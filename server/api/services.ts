@@ -8,7 +8,7 @@ export default defineEventHandler((event) => {
     const servicesRaw = [
         {
             id: 1,
-            iconName: 'i-lucide-brain-circuit', // AI & Analytics
+            iconName: 'i-lucide-brain-circuit',
             image: '/images/services/1.jpg',
             data: {
                 en: {
@@ -27,7 +27,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 2,
-            iconName: 'i-lucide-shield-alert', // Risk
+            iconName: 'i-lucide-shield-alert',
             image: '/images/services/2.jpg',
             data: {
                 en: {
@@ -46,7 +46,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 3,
-            iconName: 'i-lucide-file-check-2', // Audit
+            iconName: 'i-lucide-file-check-2',
             image: '/images/services/3.jpg',
             data: {
                 en: {
@@ -65,7 +65,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 4,
-            iconName: 'i-lucide-rocket', // Transformation
+            iconName: 'i-lucide-rocket',
             image: '/images/services/4.jpg',
             data: {
                 en: {
@@ -84,7 +84,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 5,
-            iconName: 'i-lucide-graduation-cap', // Training
+            iconName: 'i-lucide-graduation-cap',
             image: '/images/services/5.jpg',
             data: {
                 en: {
@@ -103,7 +103,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 6,
-            iconName: 'i-lucide-cpu', // Digitalization
+            iconName: 'i-lucide-cpu',
             image: '/images/services/6.jpg',
             data: {
                 en: {
@@ -122,7 +122,7 @@ export default defineEventHandler((event) => {
         },
         {
             id: 7,
-            iconName: 'i-lucide-briefcase', // Consulting
+            iconName: 'i-lucide-briefcase',
             image: '/images/services/7.jpg',
             data: {
                 en: {

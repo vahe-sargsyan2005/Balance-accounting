@@ -5,7 +5,7 @@ export default defineAppConfig({
         address: 'Երևան, Հայաստան',
         phone: '+374 99 999 999',
         url: 'https://balance.example.com',
-        author: '@Vahesargsyan2005',
+        author: '@w33bvGL',
         logo: '/logo.png',
         favicon: '/favicon.ico',
     },

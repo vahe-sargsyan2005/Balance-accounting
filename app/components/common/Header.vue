@@ -31,12 +31,11 @@ const academyLinks = computed(() => {
   if (!courses.value) return []
   return courses.value.map(course => {
     // @ts-ignore
-    const isBeginner = course.category === 'beginners' || course.level === 'Beginner'
     return {
       id: course.id,
       label: course.title,
       to: '/courses',
-      icon: isBeginner ? 'i-lucide-sprout' : 'i-lucide-award'
+      icon: course.icon
     }
   })
 })
@@ -87,7 +86,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
           <template #content="{ close }">
             <template v-if="serviceLinks.length">
-              <NuxtLink
+              <NuxtLinkLocale
                   v-for="item in serviceLinks"
                   :key="item.id"
                   :to="item.to"
@@ -98,7 +97,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                   <Icon :name="item.icon" size="18" />
                 </div>
                 <span class="font-medium text-sm leading-snug pt-1">{{ item.label }}</span>
-              </NuxtLink>
+              </NuxtLinkLocale>
             </template>
             <div v-else class="p-4 text-center text-gray-400 text-xs">Loading...</div>
           </template>
@@ -121,7 +120,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
           <template #content="{ close }">
             <template v-if="academyLinks.length">
-              <NuxtLink
+              <NuxtLinkLocale
                   v-for="item in academyLinks"
                   :key="item.id"
                   :to="item.to"
@@ -132,7 +131,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                   <Icon :name="item.icon" size="18" />
                 </div>
                 <span class="font-medium text-sm pt-0.5">{{ item.label }}</span>
-              </NuxtLink>
+              </NuxtLinkLocale>
             </template>
             <div v-else class="p-4 text-center text-gray-400 text-xs">Loading...</div>
           </template>

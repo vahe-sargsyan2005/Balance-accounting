@@ -107,19 +107,6 @@
       }
     ]
   },
-  "footer": {
-    "ctaTitle": "Պատրա՞ստ եք վերահսկել\nՁեր ֆինանսները:",
-    "contactEmail": "infohorqur.am",
-    "contactAddress": "Երևան, Հայաստան",
-    "subscribeTitle": "Հետևեք նորություններին",
-    "emailPlaceholder": "Էլ. հասցե",
-    "subscribeButton": "Բաժանորդագրվել",
-    "consentText": "Ես համաձայն եմ, որ իմ ներկայացրած տվյալները հավաքագրվեն և պահպանվեն:",
-    "col1Title": "ՈԼՈՐՏՆԵՐ",
-    "col2Title": "ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ",
-    "col3Title": "ԱՐԱԳ ՀՂՈՒՄՆԵՐ",
-    "copyright": "© {year} Horqur. Բոլոր իրավունքները պաշտպանված են:"
-  },
   "industriesList": {
     "auto": "Ավտոմոբիլային և շարժունակություն",
     "defense": "Պաշտպանություն և անվտանգություն",
