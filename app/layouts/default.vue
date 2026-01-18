@@ -1,9 +1,10 @@
 <template>
   <div>
-    <TopBar />
-    <AppHeader/>
+    <CommonTopBar />
+   <CommonHeader />
         <main class="flex-1 w-full">
           <slot />
         </main>
+    <CommonFooter />
   </div>
 </template>

@@ -9,9 +9,8 @@
       <Cases/>
       <TeamSection/>
       <CareerCareersSection/>
-      <IndexFaqSection/>
       <IndexTestimonials/>
+      <IndexFaqSection/>
       <ContactSection/>
-      <Footer/>
     </div>
 </template>

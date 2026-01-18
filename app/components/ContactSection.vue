@@ -45,12 +45,11 @@ const handleSubmit = async () => {
             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1000&h=1200"
             alt="Contact Support"
             class="absolute inset-0 w-full h-full object-cover object-center lg:object-[center_top]"
-        />
-        <div class="absolute inset-0 bg-black/10 lg:bg-transparent"></div>
+        >
+        <div class="absolute inset-0 bg-black/10 lg:bg-transparent"/>
       </div>
 
-      <div class="hidden lg:block bg-[#001120] relative">
-      </div>
+      <div class="hidden lg:block bg-[#001120] relative"/>
     </div>
 
     <div class="relative lg:absolute lg:inset-0 pointer-events-none flex items-center justify-center lg:justify-end container mx-auto px-4 md:px-8 py-16 lg:py-0">
@@ -74,7 +73,7 @@ const handleSubmit = async () => {
           </h3>
         </div>
 
-        <form @submit.prevent="handleSubmit" class="space-y-5">
+        <form class="space-y-5" @submit.prevent="handleSubmit">
 
           <input
               v-model="form.name"
@@ -82,7 +81,7 @@ const handleSubmit = async () => {
               :placeholder="$t('contact.namePlaceholder')"
               class="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:border-blue-600 focus:bg-white transition-all duration-300 placeholder-gray-400"
               required
-          />
+          >
 
           <input
               v-model="form.email"
@@ -90,7 +89,7 @@ const handleSubmit = async () => {
               :placeholder="$t('contact.emailPlaceholder')"
               class="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:border-blue-600 focus:bg-white transition-all duration-300 placeholder-gray-400"
               required
-          />
+          >
 
           <input
               v-model="form.subject"
@@ -98,7 +97,7 @@ const handleSubmit = async () => {
               :placeholder="$t('contact.subjectPlaceholder')"
               class="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:border-blue-600 focus:bg-white transition-all duration-300 placeholder-gray-400"
               required
-          />
+          >
 
           <textarea
               v-model="form.message"
@@ -106,15 +105,15 @@ const handleSubmit = async () => {
               :placeholder="$t('contact.messagePlaceholder')"
               class="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:border-blue-600 focus:bg-white transition-all duration-300 placeholder-gray-400 resize-none"
               required
-          ></textarea>
+          />
 
           <div class="flex items-start gap-3 pt-2">
             <input
+                id="contact-consent"
                 v-model="form.consent"
                 type="checkbox"
-                id="contact-consent"
                 class="mt-1 w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-            />
+            >
             <label for="contact-consent" class="text-sm text-gray-500 cursor-pointer select-none">
               {{ $t('contact.consentText') }}
             </label>

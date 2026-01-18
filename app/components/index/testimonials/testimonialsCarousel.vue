@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
-import { type IReview } from '~/types/testimonials';
+import type { IReview } from '~/types/testimonials';
 
 defineProps({
   reviews: {

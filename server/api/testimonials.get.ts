@@ -1,4 +1,4 @@
-import { IReview, ITestimonialApiResponse } from '~/types/testimonials';
+import type { IReview, ITestimonialApiResponse } from '~/types/testimonials';
 
 const testimonialData: ITestimonialApiResponse = {
     'en': [

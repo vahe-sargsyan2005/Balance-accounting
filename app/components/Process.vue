@@ -24,7 +24,7 @@ const steps = [
 
       <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-gray-200 z-0"></div>
+        <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-gray-200 z-0"/>
 
         <div
             v-for="(step, index) in steps"

@@ -9,7 +9,7 @@
 
     <div class="flex items-center pt-10 border-t border-gray-700 mt-auto">
       <div class="w-20 h-20 rounded-full overflow-hidden mr-4 flex-shrink-0 bg-gray-800">
-        <img :src="review.avatar" :alt="review.author" class="w-full h-full object-cover" />
+        <img :src="review.avatar" :alt="review.author" class="w-full h-full object-cover" >
       </div>
       <div>
         <p class="text-3xl font-semibold italic">{{ review.author }}</p>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { type IReview } from '~/types/testimonials';
+import type { IReview } from '~/types/testimonials';
 
 defineProps({
   review: {

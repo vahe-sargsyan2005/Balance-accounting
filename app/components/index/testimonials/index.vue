@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { type IReview } from '~/types/testimonials';
+import type { IReview } from '~/types/testimonials';
 
 const { locale } = useI18n();
 
